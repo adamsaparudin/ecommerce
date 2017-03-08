@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+      <link rel="stylesheet" type="text/css" href="css/bulma.css">
+      <link rel="stylesheet" type="text/css" href="css/style.css">
+      <script src="javascript/axios.js"></script>
+      <script src="javascript/vue.js"></script>
+
+    <title></title>
+  </head>
+  <body>
+    <div id="app">
+
+    <!-- Header -->
+    <div class="columns is-full" id="header">
+
+      <div class="column is-half">
+        <nav>
+          <ul>
+            <li><a href="item.html"> Item | </a></li>
+            <li><a href="cart.html"> Cart </a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="column">
+        <p>Profile Data</p>
+      </div>
+
+    </div>
+
+    <!-- Body -->
+    <div class="columns">
+      <section id="form-add-item">
+          <div class="column">
+            <p>Create the user</p>
+            <form class=""  v-on:submit='createUser' method="post">
+
+              <label>Name : <input type="text" name="name" v-model='newUser.name'></label> <br>
+              <label>Member Id : <input type="text" name="memberId" v-model='newUser.memberId'></label> <br>
+              <label>Address : <input type="text" name="address" v-model='newUser.address'></label> <br>
+              <label>Zip Code : <input type="text" name="zip" v-model='newUser.zip'></label> <br>
+              <label>Phone : <input type="text" name="phone" v-model='newUser.phone'></label> <br>
+              <input type="submit" value="Submit">
+            </form>
+
+            <br><br><br>
+
+            <p>Create the Item</p>
+            <form class="" v-on:submit='createItem' method="post">
+
+              <label>Item Code   : <input type="text" name="itemCode" v-model='newItem.itemCode'></label> <br>
+              <label>Item Name   : <input type="text" name="name" v-model='newItem.name'></label> <br>
+              <label>Description : <input type="text" name="description" v-model='newItem.description'></label> <br>
+              <label>Price       : <input type="text" name="price" v-model='newItem.price'></label> <br>
+              <label>Stock       : <input type="text" name="stock" v-model='newItem.stock'></label> <br>
+              <input type="submit" value="Submit">
+            </form>
+
+
+          </div>
+      </section>
+    </div>
+    </div>
+
+    <script src="javascript/script.js"></script>
+  </body>
+
+</html>

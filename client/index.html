@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/bulma.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="javascript/axios.js"></script>
+    <script src="javascript/vue.js"></script>
+    <title>Index Home Page</title>
+  </head>
+  <body>
+    <div id="app">
+
+      <label class="label"> Your Member ID you little prick <input type="text" name="Username" value=""> </label> <br><br>
+
+      <div class="columns is-multiline" style="background-color: red;">
+
+        <template v-for='(item, index) in itemData'>
+        <div class="column is-3" style="background-color: black;">
+          <div class="card" style="padding: 10px;">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img src="http://bulma.io/images/placeholders/256x256.png" alt="shitimage">
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="media-content">
+                <p class="title is-4">{{ item.name }}</p>
+              </div>
+            </div>
+            <div class="content">
+              <p>{{ item.description }}</p>
+              <p>
+              <small>{{ item.itemCode }}</small>
+              <small>{{ item.price }}</small>
+              <small>{{ item.stock }}</small>
+              </p>
+              <p>
+                Beli : <select v-model="item.qty">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                </select>
+              </p>
+
+
+              <button v-on:click="addToCart(item, item.qty)" class="button is-primary">Add To Cart This Shit</button>
+            </div>
+          </div>
+        </div>
+        </template>
+
+      </div>
+
+      <h1>SEARCH FOR THE WORLD</h1>
+      <div class="columns">
+        <section id="search">
+          <label class="label">Search your shit : <input class="input" type="text" v-model="search" @keyup="searchReal" ></label>
+        </section>
+      </div>
+
+      <h1>ISI KERANJANG BALANJA</h1>
+      <div class="columns">
+
+        <section id="cart-bag" style="padding: 20px">
+          <template v-if="cart == []">
+            <h2>Keranjang belanja anda kosong</h2>
+          </template>
+
+          <template v-else>
+            <table class="table">
+              <thead>
+                <th>Name</th>
+                <th>Kode</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Total</th>
+              </thead>
+              <tbody>
+                <tr v-for="(data, index) in cart">
+                  <td>{{ data.item.name }}</td>
+                  <td>{{ data.item.itemCode }}</td>
+                  <td>{{ data.item.price }}</td>
+                  <td>{{ data.qty }}</td>
+                  <td>{{ data.qty * data.item.price }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </template>
+        </section>
+
+      </div>
+
+    </div>
+  <script src="javascript/script.js"></script>
+  </body>
+</html>
